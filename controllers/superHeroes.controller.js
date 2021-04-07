@@ -21,4 +21,27 @@ module.exports.getAllHeroes = async (req, res , next) => {
   } catch (err) {
     next(err);
   }
+};
+
+module.exports.getHero = async (req,res,next) => {
+  try {
+    const{params:{idHero}}=req;
+    const hero = await SuperHeroes.findByPk(+idHero);
+    res.status(200).send(hero);
+  } catch (err) {
+    next(err)
+  }
+};
+
+module.exports.updateHero = async(req, res, next)=>{
+  try {
+    const {body, params:{idHero}}=req;
+  const [rowsCount, [updatedHero]] = await SuperHeroes.update(body,{
+    where: {id:idHero},
+    returning : true,
+  })
+  res.status(200).send(updatedHero);
+  } catch (err) {
+    next(err)
+  }
 }
