@@ -21,7 +21,16 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      superHeroesId:{
+        field: 'super_heroes_id',
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references:{
+          model: 'super_heroes',
+          key: 'id'
+        }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

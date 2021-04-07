@@ -9,8 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       path: {
-        
         type: Sequelize.STRING(400)
+      },
+      superHeroesId:{
+        field: 'super_heroes_id',
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references:{
+          model: 'super_heroes',
+          key: 'id'
+        }
       },
       createdAt: {
         field: 'created_at',

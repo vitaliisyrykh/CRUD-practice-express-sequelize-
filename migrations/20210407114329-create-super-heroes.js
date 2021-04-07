@@ -24,7 +24,7 @@ module.exports = {
         allowNull: false,
       },
       cathPhrase: {
-        field: 'cathPhrase',
+        field: 'cath_phrase',
         type: Sequelize.STRING(250),
         allowNull: false,
       },

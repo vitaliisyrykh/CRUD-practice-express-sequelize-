@@ -3,17 +3,12 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class superPowers extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class SuperPowers extends Model {
     static associate(models) {
-      // define association here
+     SuperPowers.belongsTo(models.SuperHeroes, )
     }
   };
-  super_powers.init({
+  SuperPowers.init({
     power: {
       type:DataTypes.STRING,
       allowNull: false,
@@ -32,9 +27,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'superPowers',
+    modelName: 'SuperPowers',
     tableName: 'super_powers',
     underscored: true,
   });
-  return super_powers;
+  return SuperPowers;
 };
