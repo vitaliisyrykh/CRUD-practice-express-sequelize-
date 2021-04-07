@@ -6,10 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   class SuperHeroes extends Model {
    
     static associate(models) {
-     SuperHeroes.hasMany(models.superPowers,{
+     SuperHeroes.hasMany(models.SuperPowers,{
       foreignKey:'superHeroesId'
      });
-     SuperHeroes.hasMany(models.images,{
+     SuperHeroes.hasMany(models.Images,{
       foreignKey:'superHeroesId'
      }) 
     }
