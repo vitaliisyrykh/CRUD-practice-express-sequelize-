@@ -1,4 +1,4 @@
-const { SuperHeroes } = require('../models/SuperHeroes');
+const { SuperHeroes } = require('../models/');
 
 module.exports.checkHero = async (req, res, next) => {
   try {

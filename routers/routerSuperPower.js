@@ -7,6 +7,11 @@ const superPowerRouter = Router({
 });
 
 superPowerRouter.post('/',checkHero, superPowerController.createSuperPower);
+superPowerRouter.get('/',checkHero,superPowerController.getSuperPower);
+
+superPowerRouter.route('/:idPower', checkHero)
+  .get(superPowerController.getPower)
+  .delete(superPowerController.deleteSuperPower);
 
 
 module.exports = superPowerRouter;
