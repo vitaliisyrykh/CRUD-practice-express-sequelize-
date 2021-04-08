@@ -10,5 +10,6 @@ superHeroRouter.get('/',pagination, superHeroesController.getAllHeroes);
 
 superHeroRouter.get('/:idHero', superHeroesController.getHero);
 superHeroRouter.patch('/:idHero', superHeroesController.updateHero);
+superHeroRouter.delete('/:idHero', superHeroesController.deleteHero);
 
 module.exports = superHeroRouter;
