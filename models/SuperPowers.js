@@ -5,7 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class SuperPowers extends Model {
     static associate(models) {
-     SuperPowers.belongsTo(models.SuperHeroes, )
+     SuperPowers.belongsTo(models.SuperHeroes,{
+      foreignKey:'superHeroesId',
+     } )
     }
   };
   SuperPowers.init({

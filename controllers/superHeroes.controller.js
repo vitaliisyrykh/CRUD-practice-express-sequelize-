@@ -26,12 +26,11 @@ module.exports.getAllHeroes = async (req, res, next) => {
 module.exports.getHero = async (req, res, next) => {
   try {
     const {
-      params: { idHero }
-    } = req
-    const hero = await SuperHeroes.findByPk(+idHero)
-    res.status(200).send(hero)
+      heroInstance
+    } = req;
+    res.status(200).send(heroInstance);
   } catch (err) {
-    next(err)
+    next(err);
   }
 }
 

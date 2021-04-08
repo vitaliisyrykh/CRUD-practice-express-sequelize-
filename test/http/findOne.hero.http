@@ -1,1 +1,1 @@
-GET http://localhost:3003/api/superHeroes/2 HTTP/1.1
+GET http://localhost:3010/api/superHeroes/1 HTTP/1.1

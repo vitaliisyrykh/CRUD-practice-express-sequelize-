@@ -1,7 +1,8 @@
 const { Router } = require('express');
 const path = require('path');
 const multer = require('multer');
-const imgsController = require('../controllers/imgsHero.controller')
+const {checkHero} = require('../middlewares/checkHero.mw');
+const imgsController = require('../controllers/imgsHero.controller');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -14,8 +15,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-const imgsRouter = Router();
+const imgsRouter = Router({
+  mergeParams:true
+});
 
-imgsRouter.post('/',upload.array('heroImg'), imgsController.addImgs);
+imgsRouter.post('/',checkHero, upload.single('heroImg'), imgsController.addImgs);
+imgsRouter.get('/',checkHero, imgsController.getAllImgs);
+imgsRouter.delete('/:idImg',checkHero, imgsController.deleteImg);
+
 
 module.exports = imgsRouter;
