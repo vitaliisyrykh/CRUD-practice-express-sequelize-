@@ -1,1 +1,3 @@
-GET http://localhost:3003/api/superHeroes/ HTTP/1.1
+GET http://localhost:3003/api/superHeroes?limit=5&offset=0 HTTP/1.1
+
+
