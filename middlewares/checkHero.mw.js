@@ -8,8 +8,8 @@ module.exports.checkHero = async (req, res, next) => {
     
     const heroInstance = await SuperHeroes.findByPk(idHero);
     if (!heroInstance) {
-      throw new Error('Hero not found');
-      return next(err)
+      throw new Error('Hero not found')
+      
     };
     console.log(heroInstance);
     req.heroInstance = heroInstance;
