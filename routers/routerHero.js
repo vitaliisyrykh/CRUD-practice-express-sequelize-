@@ -5,11 +5,12 @@ const superHeroesController = require('../controllers/superHeroes.controller');
 
 const imgsRouter = require('./routerImgs');
 const superPowerRouter = require('./routerSuperPower');
+const uploadImgs = require('../middlewares/uploadImgs')
 
 superHeroRouter = Router({
   mergeParams: true,
 });
-superHeroRouter.post('/', superHeroesController.createSuperHeroe);
+superHeroRouter.post('/',uploadImgs, superHeroesController.createSuperHeroe);
 superHeroRouter.get('/', pagination, superHeroesController.getAllHeroes);
 
 superHeroRouter
