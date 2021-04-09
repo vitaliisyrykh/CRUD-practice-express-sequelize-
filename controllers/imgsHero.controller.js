@@ -5,23 +5,22 @@ module.exports.addImgs = async (req, res, next) => {
   try {
     const {
       heroInstance,
-      file: { filename },
+      files,
     } = req;
 
-    const addedImg = await heroInstance.createImage(
-      { path: filename },
-      { returning: true }
-    );
-    if (!addedImg) {
+    const addedImgs = await files.map(file=>{heroInstance.createImage(
+      { path: file }
+    )});
+    if (!addedImgs) {
       return next(createError(400, 'Image can`t uploud '));
     }
-    res.status(200).send(addedImg);
+    res.status(200).send(addedImgs);
   } catch (err) {
     next(err);
   }
 };
 
-module.exports.updateImg = async (req, res, next) => {
+/* module.exports.updateImg = async (req, res, next) => {
   try {
     const {
       file: { filename },
@@ -42,7 +41,7 @@ module.exports.updateImg = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+}; */
 
 module.exports.getAllImgs = async (req, res, next) => {
   try {
