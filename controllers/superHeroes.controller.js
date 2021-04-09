@@ -1,11 +1,28 @@
-const { SuperHeroes } = require('../models');
+const { SuperHeroes,Images, SuperPowers } = require('../models');
 const createError = require('http-errors');
 
 module.exports.createSuperHeroe = async (req, res, next) => {
   try {
-    const { body } = req;
+    const { body:{superPowers},body,files } = req;
     const createdHero = await SuperHeroes.create(body);
 
+    if(files.length){
+      const imgs =  files.map(file=>({
+         path:file.filename,
+         superHeroesId:createdHero.id
+      }));
+      await Images.bulkCreate(imgs,{returning:true})
+    };
+    
+    if(superPowers.length){
+      const powers = superPowers.map(powerObj=>({
+        power: powerObj.power,
+        discription: powerObj.discription,
+        superHeroesId:createdHero.id
+      }));
+      await SuperPowers.bulkCreate(powers,{returning:true});
+    };
+    
     if (!createdHero) {
       return next(createError(400, 'Invalid error'));
     }
