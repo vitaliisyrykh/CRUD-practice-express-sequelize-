@@ -9,8 +9,9 @@ const superPowerRouter = Router({
 superPowerRouter.post('/',checkHero, superPowerController.createSuperPower);
 superPowerRouter.get('/',checkHero,superPowerController.getSuperPower);
 
-superPowerRouter.route('/:idPower', checkHero)
-  .get(superPowerController.getPower)
+superPowerRouter.route('/:idPower')
+  .get(checkHero,superPowerController.getPower)
+  .patch(superPowerController.updatePower)
   .delete(superPowerController.deleteSuperPower);
 
 

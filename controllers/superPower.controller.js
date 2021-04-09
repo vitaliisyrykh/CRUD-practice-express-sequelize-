@@ -20,7 +20,34 @@ module.exports.getSuperPower = async (req, res, next) => {
   }
 };
 
-module.exports.getPower = async (req, res, next) => {};
+module.exports.getPower = async (req, res, next) => {
+  try {
+    const {
+      heroInstance,
+      params: { idPower },
+    } = req;
+    const SuperPower = await heroInstance.getSuperPowers({
+      where: { id: idPower },
+    });
+    res.status(200).send(SuperPower);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.updatePower = async (req, res, next) => {
+  try {
+    const {
+      params: { idPower },
+      body,
+    } = req;
+    const power = await SuperPowers.findByPk(idPower);
+    const UpdatedPower = await power.update(body, { returning: true });
+    res.status(200).send(UpdatedPower);
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports.deleteSuperPower = async (req, res, next) => {
   try {
