@@ -6,33 +6,33 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       path: {
-        type: Sequelize.STRING(400)
+        type: Sequelize.STRING(400),
       },
-      superHeroesId:{
+      superHeroesId: {
         field: 'super_heroes_id',
         type: Sequelize.INTEGER,
         allowNull: false,
-        references:{
+        references: {
           model: 'super_heroes',
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
       createdAt: {
         field: 'created_at',
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         field: 'updated_at',
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('images');
-  }
+  },
 };

@@ -6,36 +6,36 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       power: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       discription: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         field: 'created_at',
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        field:'updated_at',
+        field: 'updated_at',
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
-      superHeroesId:{
+      superHeroesId: {
         field: 'super_heroes_id',
         type: Sequelize.INTEGER,
         allowNull: false,
-        references:{
+        references: {
           model: 'super_heroes',
-          key: 'id'
-        }
+          key: 'id',
+        },
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('super_powers');
-  }
+  },
 };
