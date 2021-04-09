@@ -21,6 +21,7 @@ module.exports.getAllHeroes = async (req, res, next) => {
     const allSuperHero = await SuperHeroes.findAll({
       attributes: { exclude: ['createdAt'] },
       ...pagination,
+      returning:true
     });
     if (!allSuperHero) {
       return next(createError(404, 'Heroes not found'));
